@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+// App.js
+
+import React, { useState } from 'react';
 import './App.css';
+import { TodoWrapper } from './components/TodoWrapper';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode'); 
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="navbar">
+        <div className="logo">TODO</div>
+        <div className="dark-mode-toggle">
+          <button onClick={toggleDarkMode}>{darkMode ? 'Light Mode' : 'Dark Mode'}</button>
+        </div>
+      </nav>
+      <TodoWrapper />
     </div>
   );
 }
